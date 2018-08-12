@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="template/ui.xhtml">
+	<ui:define name="body">
+		<h:form id="primeForm">
+			<div class="ui-fluid">
+				<p:panel styleClass="teste" header="Seja Bem Vindo!!! #{areaAlunoController.aluno.nome}" style="margin-top:20px">
+					<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank">
+						<p:outputLabel value="Curso:" />
+						<p:outputLabel value="Engenharia Civil"/>
+						<p:outputLabel value="Semestre:" />
+						<p:outputLabel value="8º Semestre"/>
+						<p:outputLabel value="Previsão Conclusão"/>
+						<p:outputLabel value="01/2019"/>
+					</p:panelGrid>
+				</p:panel>
+				<p:panel header="Ações" style="margin-top:20px">
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank">
+						<p:commandLink id="btnAtualizar" actionListener="#{areaAlunoController.exibirAtualizaCadastro}" update="primeForm">
+							<h:outputText value="Atualize seu cadastro" />
+						</p:commandLink>
+						<p:commandLink>
+							<h:outputText value="Extrato Financeiro" />
+						</p:commandLink>
+						<p:commandLink>
+							<h:outputText value="Histórico Escolar" />
+						</p:commandLink>
+						<p:commandLink>
+							<h:outputText value="Boletim de Notas e Faltas" />
+						</p:commandLink>
+					</p:panelGrid>
+				</p:panel>
+				<p:panel id="panelAtualizaCadastro" rendered="#{areaAlunoController.atualizarCadastro}" header="Atualize seu cadastro:" style="margin-top:20px; text-align:center">
+					<p:messages id="messages" />
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-5" layout="grid" styleClass="ui-panelgrid-blank">
+						<p:outputLabel id="outputNome" for="nome" value="Nome:" />
+						<p:inputText id="nome" value="#{areaAlunoController.aluno.nome}" required="true" />
+						<p:outputLabel for="email" value="Email:" />
+						<p:inputText id="email" required="true" value="#{areaAlunoController.aluno.email}"/>
+						<p:outputLabel for="telefone" value="Telefone:" />
+						<p:inputText id="telefone" required="true" value="#{areaAlunoController.aluno.telefone}"/>
+					</p:panelGrid>
+					<p:commandButton value="Atualizar" update="primeForm" action="#{areaAlunoController.atualizar}"/>
+				</p:panel>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="template/ui.xhtml">
+	<ui:define name="body">
+		<h:form id="primeForm">
+			<div class="ui-fluid">
+				<p:panel id="panelLogin" header="Login" style="margin-top:20px; text-align:center">
+					<p:messages id="messages" />
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-5" layout="grid" styleClass="ui-panelgrid-blank">
+						<p:outputLabel id="outputNome" for="nomeUsuario" value="Nome Usuário:" />
+						<p:inputText id="nomeUsuario" value="#{loginController.login.name}" required="true" />
+						<p:outputLabel id="outputSenha" for="senha" value="Senha:" />
+						<p:password id="senha" required="true" value="#{loginController.login.password}"/>
+					</p:panelGrid>
+					<p:commandButton id="botaoConfirmar" value="Entrar" update="messages" action="#{loginController.avancar}"/>
+				</p:panel>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
