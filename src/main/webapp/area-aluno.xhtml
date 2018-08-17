@@ -42,7 +42,7 @@
 						<p:outputLabel for="telefone" value="Telefone:" />
 						<p:inputText id="telefone" required="true" value="#{areaAlunoController.aluno.telefone}"/>
 					</p:panelGrid>
-					<p:commandButton value="Atualizar" update="primeForm" action="#{areaAlunoController.atualizar}"/>
+					<p:commandButton id="btnUpdate" value="Atualizar" update="primeForm" action="#{areaAlunoController.atualizar}"/>
 				</p:panel>
 			</div>
 		</h:form>

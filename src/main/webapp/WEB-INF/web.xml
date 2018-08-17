@@ -19,7 +19,7 @@
 	</context-param>
 	
 	<welcome-file-list>
-		<welcome-file>cadastroprecos.jsf</welcome-file>
+		<welcome-file>login.jsf</welcome-file>
 	</welcome-file-list>
 
 	<servlet>

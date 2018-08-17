@@ -17,14 +17,14 @@ public class AcademicTest {
 
 	@Before
 	public void setUp() {
-		System.setProperty("webdriver.gecko.driver", "C:\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", "geckodriver");
 		driver = new FirefoxDriver();
-		driver.navigate().to("http://localhost:9080/jsflab/");
+		driver.navigate().to("http://localhost:8080/jsflab/");
 	}
 
 	@After
 	public void tearDown() {
-//		driver.close();
+		driver.close();
 	}
 
 	@Test
@@ -32,7 +32,7 @@ public class AcademicTest {
 		WebElement outputNome = driver.findElement(By.id("primeForm:outputNome"));
 		WebElement outputSenha = driver.findElement(By.id("primeForm:outputSenha"));
 		WebElement panelLogin = driver.findElement(By.xpath("//span[text()='Login']"));
-		assertEquals(outputNome.getText(), "Nome Usuário:*");
+		assertEquals(outputNome.getText(), "Nome Usuario:*");
 		assertEquals(outputSenha.getText(), "Senha:*");
 		assertEquals(panelLogin.getText(), "Login");
 	}
@@ -53,7 +53,7 @@ public class AcademicTest {
 		inputLogin.sendKeys("gennerdiego");
 		inputSenha.sendKeys("genner123");
 		button.click();
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		WebElement panelBemVindo = driver.findElement(By.xpath("//span[text()='Seja Bem Vindo!!! gennerdiego']"));
 		assertEquals(panelBemVindo.getText(), "Seja Bem Vindo!!! gennerdiego");
 	}
@@ -66,10 +66,12 @@ public class AcademicTest {
 		inputLogin.sendKeys("gennerdiego");
 		inputSenha.sendKeys("genner123");
 		button.click();
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		WebElement atualizar = driver.findElement(By.id("primeForm:btnAtualizar"));
 		atualizar.click();
-		driver.findElement(By.linkText("Atualize seu cadastro:"));
+		Thread.sleep(1000);
+		WebElement panel = driver.findElement(By.id("primeForm:btnUpdate"));
+		assertEquals(panel.getText(), "Atualizar");
 	}
 
 }
